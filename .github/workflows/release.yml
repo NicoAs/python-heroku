@@ -26,6 +26,7 @@ jobs:
                 repository: 'NicoAs/heroku-buildpack-python'
                 path: 'repo/target'
             - run: ls repo
+            - run: tar --help
             - run: |
                 cd repo
                 tar cfvz --exclude='**/.git/*' ../python-heroku-v${{ github.run_number}}.tar.gz . 
