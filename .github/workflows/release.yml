@@ -44,4 +44,9 @@ jobs:
               with:
                 files: python-heroku-v${{ github.run_number}}.tar.gz
                 tag_name: v${{ github.run_number}}
+            - name: Upload python to GitHub Release
+              uses: softprops/action-gh-release@v1
+              with:
+                files: repo/python-3-11-1.tar.gz
+                tag_name: v${{ github.run_number}}
         
