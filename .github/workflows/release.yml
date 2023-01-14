@@ -36,7 +36,7 @@ jobs:
             #    exclusions: '*.git*'
             - run: |
                 cd repo
-                tar cfvz --exclude='.git'  --exclude='target/.git' ../python-herokuv${{ github.run_number}}.tar.gz . 
+                tar cfvz ../python-herokuv${{ github.run_number}}.tar.gz . 
                 cd ..
                 ls
             #- uses: actions/upload-artifact@v3
