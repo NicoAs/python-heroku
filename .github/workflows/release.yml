@@ -28,7 +28,7 @@ jobs:
             - run: ls repo
             - run: |
                 cd repo
-                tar --exclude=.git cfvz ../python-heroku-v${{ github.run_number}}.tar.gz . 
+                tar --exclude='.git' cfvz ../python-heroku-v${{ github.run_number}}.tar.gz . 
                 cd ..
                 ls
             - name: Create GitHub Release
