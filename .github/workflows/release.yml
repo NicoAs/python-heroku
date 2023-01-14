@@ -26,29 +26,12 @@ jobs:
                 repository: 'NicoAs/heroku-buildpack-python'
                 path: 'repo/target'
             - run: ls repo
-            #- name: Archive Release
-            #  uses: thedoctor0/zip-release@main
-            #  with:
-            #    type: 'tar'
-            #    filename: 'heroku-buildpack-python_v${{ github.run_number}}.tar.gz'
-            #    path: repo
-            #    custom: --ignore-failed-read
-            #    exclusions: '*.git*'
             - run: |
                 cd repo
-                tar cfvz ../python-herokuv${{ github.run_number}}.tar.gz . 
+                tar --exclude=.git cfvz ../python-heroku-v${{ github.run_number}}.tar.gz . 
                 cd ..
                 ls
-            #- uses: actions/upload-artifact@v3
-            #  with:
-            #   name: heroku-python
-            #   path: out/heroku-buildpack-python.tar.gz
-            #- run: ls
-            #- name: Create GitHub Release
-            #  uses: actions/create-release@v1
-            #  with:
             - name: Create GitHub Release
-              #id: create-new-release
               uses: actions/create-release@v1
               env:
                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -56,35 +39,8 @@ jobs:
                 tag_name: v${{ github.run_number}}
                 release_name: Release v${{ github.run_number}}
             - name: Upload asset to GitHub Release
-              #uses: actions/upload-release-asset@v1
-              #env:
-              #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-              #with:
-              #  upload_url: v${{ steps.create-new-release.outputs.upload_url}}
-              #  asset_path: ./heroku-buildpack-python.tar.gz
-              #  #asset_name: heroku-buildpack-python-${{ github.run_number}}.tar.gz  
-              #  asset_content_type: application/zip
               uses: softprops/action-gh-release@v1
-              #if: startsWith(github.ref, 'refs/tags/')
               with:
-                files: heroku-buildpack-python-v${{ github.run_number}}.tar.gz
+                files: python-heroku-v-v${{ github.run_number}}.tar.gz
                 tag_name: v${{ github.run_number}}
         
-        # artifacts: "release.tar.gz,foo/*.txt"
-               
-            #- name: Compress action step
-            #  uses: a7ul/tar-action@v1.1.2
-            #  id: compress
-            #  with:
-            #    command: c
-            #    cwd: ./
-            #    files: |
-            #      .
-            #    outPath: heroku-buildpack-python.tar.gz
-            #- run: ls
-            #- name: Downloader
-            #  uses: robinraju/release-downloader@v1.7
-            #  with:
-            #    latest: true
-            #    filename: "*"
-            #    tarball: true
