@@ -1,0 +1,15 @@
+api = "0.4"
+
+[buildpack]
+id = "heroku/python"
+version = "0.0.0"
+name = "Python"
+
+[[stacks]]
+id = "heroku-18"
+
+[[stacks]]
+id = "heroku-20"
+
+[[stacks]]
+id = "heroku-22"
