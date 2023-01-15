@@ -16,7 +16,7 @@ jobs:
             - name: Install git lfs
               run: wget https://packagecloud.io/github/git-lfs/packages/debian/bullseye/git-lfs_3.3.0_amd64.deb/download -O git-lfs_3.3.0_amd64.deb
             - run: ls
-            - run: apt-get install ./git-lfs_3.3.0_amd64.deb
+            - run: sudo apt-get install ./git-lfs_3.3.0_amd64.deb
             - name: Checkout
               uses: actions/checkout@v3
               with:
