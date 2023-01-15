@@ -17,6 +17,7 @@ jobs:
               run: wget https://packagecloud.io/github/git-lfs/packages/debian/bullseye/git-lfs_3.3.0_amd64.deb/download -O git-lfs_3.3.0_amd64.deb
             - run: ls
             - run: sudo apt-get install ./git-lfs_3.3.0_amd64.deb
+            - run: git lfs install
             - name: Checkout
               uses: actions/checkout@v3
               with:
@@ -30,7 +31,6 @@ jobs:
                 repository: 'NicoAs/heroku-buildpack-python'
                 path: 'repo/target'
             - run: ls -al repo
-            - run: tar --help
             - run: |
                 cd repo
                 tar cvz --exclude-vcs --exclude=python-3-11-1.tar.gz -f ../python-heroku-v${{ github.run_number}}.tar.gz . 
