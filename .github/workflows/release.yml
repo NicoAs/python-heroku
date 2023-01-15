@@ -13,6 +13,9 @@ jobs:
   release:    
       runs-on: ubuntu-22.04
       steps:
+            - name: Install git lfs
+              run: wget https://packagecloud.io/github/git-lfs/packages/debian/bullseye/git-lfs_3.3.0_amd64.deb/download
+            - run: ls
             - name: Checkout
               uses: actions/checkout@v3
               with:
@@ -20,7 +23,7 @@ jobs:
             - name: Checkout
               uses: actions/checkout@v3
               with:
-                path: 'repo'            
+                path: 'repo' 
             - uses: sudosubin/git-clone-action@v1.0.1
               with:
                 repository: 'NicoAs/heroku-buildpack-python'
