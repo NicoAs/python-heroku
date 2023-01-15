@@ -25,7 +25,7 @@ jobs:
               with:
                 repository: 'NicoAs/heroku-buildpack-python'
                 path: 'repo/target'
-            - run: ls repo
+            - run: ls -l repo
             - run: tar --help
             - run: |
                 cd repo
