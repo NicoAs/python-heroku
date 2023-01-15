@@ -13,15 +13,16 @@ jobs:
   release:    
       runs-on: ubuntu-22.04
       steps:
-            - name: Install git lfs
-              run: wget https://packagecloud.io/github/git-lfs/packages/debian/bullseye/git-lfs_3.3.0_amd64.deb/download -O git-lfs_3.3.0_amd64.deb
-            - run: ls
-            - run: sudo apt-get install ./git-lfs_3.3.0_amd64.deb
-            - run: git lfs install
+            #- name: Install git lfs
+            #  run: wget https://packagecloud.io/github/git-lfs/packages/debian/bullseye/git-lfs_3.3.0_amd64.deb/download -O git-lfs_3.3.0_amd64.deb
+            #- run: ls
+            #- run: sudo apt-get install ./git-lfs_3.3.0_amd64.deb
+            #- run: git lfs install
             - name: Checkout
               uses: actions/checkout@v3
               with:
                 path: 'repo'
+                lfs: 'true'
             - name: Checkout
               uses: actions/checkout@v3
               with:
